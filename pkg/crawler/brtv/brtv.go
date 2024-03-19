@@ -9,7 +9,6 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/cgang/epg2xmltv/pkg/config"
 	"github.com/cgang/epg2xmltv/pkg/xmltv"
 )
 
@@ -105,18 +104,18 @@ func getEpgInfo(ctx context.Context, id string, dt time.Time) (*ProgramGuide, er
 	}
 }
 
-func GetProgram(ctx context.Context, cfg config.CrawlerConfig) (*xmltv.Program, error) {
+func GetProgram(ctx context.Context, id, arg string) (*xmltv.Program, error) {
 	dt := time.Now()
-	current, err := getEpgInfo(ctx, cfg.Arg, dt)
+	current, err := getEpgInfo(ctx, arg, dt)
 	if err != nil {
 		return nil, err
 	}
 
-	program := xmltv.NewProgram(cfg.Id, xmltv.NewText("zh", cfg.Name))
+	program := xmltv.NewProgram(id)
 	program.AddItems(current.toProgrammes(dt))
 
 	dt = dt.Add(oneDay)
-	if next, err := getEpgInfo(ctx, cfg.Arg, dt); err == nil {
+	if next, err := getEpgInfo(ctx, arg, dt); err == nil {
 		program.AddItems(next.toProgrammes(dt))
 	} else {
 		log.Printf("Failed to get EPG for tomorrow: %s", err)

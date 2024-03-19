@@ -60,9 +60,9 @@ type Program struct {
 	Items   []Programme
 }
 
-func NewProgram(id string, name LocalizedText) *Program {
+func NewProgram(id string, names ...LocalizedText) *Program {
 	return &Program{
-		Channel: Channel{Id: id, DisplayNames: []LocalizedText{name}},
+		Channel: Channel{Id: id, DisplayNames: names},
 	}
 }
 
@@ -83,19 +83,11 @@ type XmlTv struct {
 	Programmes        []Programme `xml:"programme"`
 }
 
-func NewXml(channels []string, programs map[string]*Program) *XmlTv {
-	tv := XmlTv{
+func NewXml() *XmlTv {
+	return &XmlTv{
 		GeneratorInfoName: "epg2xmltv",
 		GeneratorInfoUrl:  "https://github.com/cgang/epg2xmltv",
 	}
-	for _, cid := range channels {
-		if program, ok := programs[cid]; ok {
-			tv.Channels = append(tv.Channels, program.Channel)
-			tv.Programmes = append(tv.Programmes, program.Items...)
-		}
-	}
-
-	return &tv
 }
 
 func (t *XmlTv) Save(name string) error {

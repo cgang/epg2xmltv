@@ -13,9 +13,9 @@ import (
 func Run(ctx context.Context, cfg config.CrawlerConfig) (*xmltv.Program, error) {
 	switch cfg.Type {
 	case "cntv":
-		return cntv.GetProgram(ctx, cfg)
+		return cntv.GetProgram(ctx, cfg.Id, cfg.Arg)
 	case "brtv":
-		return brtv.GetProgram(ctx, cfg)
+		return brtv.GetProgram(ctx, cfg.Id, cfg.Arg)
 	default:
 		return nil, fmt.Errorf("unknown type: %s", cfg.Type)
 	}

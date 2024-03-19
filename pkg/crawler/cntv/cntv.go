@@ -10,7 +10,6 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/cgang/epg2xmltv/pkg/config"
 	"github.com/cgang/epg2xmltv/pkg/xmltv"
 )
 
@@ -93,15 +92,24 @@ func getEpgInfo(ctx context.Context, arg string, dt time.Time) (*ProgramGuide, e
 	}
 }
 
-func GetProgram(ctx context.Context, cfg config.CrawlerConfig) (*xmltv.Program, error) {
-	arg := cfg.ArgOrId()
+func GetProgram(ctx context.Context, id, arg string) (*xmltv.Program, error) {
+	if arg == "" {
+		arg = id
+	}
+
 	dt := time.Now()
 	current, err := getEpgInfo(ctx, arg, dt)
 	if err != nil {
 		return nil, err
 	}
 
-	program := xmltv.NewProgram(cfg.Id, xmltv.NewText("zh", cfg.Name))
+	var program *xmltv.Program
+	if current.ChannelName != "" {
+		program = xmltv.NewProgram(id, xmltv.NewText("zh", current.ChannelName))
+	} else {
+		program = xmltv.NewProgram(id)
+	}
+
 	program.AddItems(current.toProgrammes())
 
 	if next, err := getEpgInfo(ctx, arg, dt.Add(oneDay)); err == nil {

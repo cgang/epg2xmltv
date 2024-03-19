@@ -10,20 +10,16 @@ type CrawlerConfig struct {
 	Type string `yaml:"type"`
 	Id   string `yaml:"id"`
 	Arg  string `yaml:"arg"`
+}
+
+type ChannelConfig struct {
+	Id   string `yaml:"id"`
 	Name string `yaml:"name"`
 }
 
-func (c CrawlerConfig) ArgOrId() string {
-	if c.Arg != "" {
-		return c.Arg
-	} else {
-		return c.Id
-	}
-}
-
 type XmlConfig struct {
-	Name     string   `yaml:"name"`
-	Channels []string `yaml:"channels"`
+	Name     string          `yaml:"name"`
+	Channels []ChannelConfig `yaml:"channels"`
 }
 
 type AppConfig struct {

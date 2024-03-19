@@ -50,7 +50,17 @@ func main() {
 	}
 
 	for _, xcfg := range cfg.OutputsConfig {
-		tv := xmltv.NewXml(xcfg.Channels, programs)
+		tv := xmltv.NewXml()
+		for _, channel := range xcfg.Channels {
+			if program, ok := programs[channel.Id]; ok {
+				if program.Channel.DisplayNames == nil {
+					program.Channel.DisplayNames = append(program.Channel.DisplayNames, xmltv.NewText("", xcfg.Name))
+				}
+				tv.Channels = append(tv.Channels, program.Channel)
+				tv.Programmes = append(tv.Programmes, program.Items...)
+			}
+		}
+
 		if err = tv.Save(xcfg.Name); err != nil {
 			fmt.Printf("Failed to save %s: %s\n", xcfg.Name, err)
 		}
