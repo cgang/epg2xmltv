@@ -1,0 +1,124 @@
+crawlers:
+  - id: cctv1
+    name: CCTV-1 综合
+    type: cntv
+  - id: cctv2
+    name: CCTV-2 财经
+    type: cntv
+  - id: cctv3
+    name: CCTV-3 综艺
+    type: cntv
+  - id: cctv4
+    name: CCTV-4 亚洲
+    type: cntv
+  - id: cctv5
+    name: CCTV-5 体育
+    type: cntv
+  - id: cctv6
+    name: CCTV-6 电影
+    type: cntv
+  - id: cctv7
+    name: CCTV-7 国防军事
+    type: cntv
+  - id: cctv8
+    name: CCTV-8 电视剧
+    type: cntv
+  - id: cctv9
+    arg: cctvjilu
+    name: CCTV-9 记录
+    type: cntv
+  - id: cctv10
+    name: CCTV-10 科教
+    type: cntv
+  - id: cctv11
+    name: CCTV-11 戏曲
+    type: cntv
+  - id: cctv12
+    name: CCTV-12 社会与法
+    type: cntv
+  - id: cctv13
+    name: CCTV-13 新闻
+    type: cntv
+  - id: cctv14
+    arg: cctvchild
+    name: CCTV-14 少儿
+    type: cntv
+  - id: cctv15
+    name: CCTV-15 音乐
+    type: cntv
+  - id: cctv5p
+    arg: cctv5plus
+    name: CCTV-5+ 体育赛事
+    type: cntv
+  - id: cctv16
+    name: CCTV-16 奥林匹克
+    type: cntv
+  - id: cctv17
+    name: CCTV-17 农业农村
+    type: cntv
+  - id: cctv4eu
+    arg: cctveurope
+    name: CCTV-4 欧洲
+    type: cntv
+  - id: cctv4am
+    arg: cctvamerica
+    name: CCTV-4 美洲
+    type: cntv
+  - id: brtv-bjws
+    arg: "134"
+    name: BRTV 北京卫视
+    type: brtv
+  - id: brtv-wy
+    arg: "135"
+    name: BRTV 文艺
+    type: brtv
+  - id: brtv-jskj
+    arg: "136"
+    name: BRTV 纪实科教
+    type: brtv
+  - id: brtv-ys
+    arg: "137"
+    name: BRTV 影视
+    type: brtv
+  - id: brtv-cj
+    arg: "133"
+    name: BRTV 财经
+    type: brtv
+  - id: brtv-tyxx
+    arg: "138"
+    name: BRTV 体育休闲
+    type: brtv
+  - id: brtv-sh
+    arg: "139"
+    name: BRTV 生活
+    type: brtv
+outputs:
+  - name: epg.xml
+    channels:
+      - cctv1
+      - cctv2
+      - cctv4
+      - cctv5
+      - cctv6
+      - cctv7
+      - cctv8
+      - cctv9
+      - cctv10
+      - cctv11
+      - cctv12
+      - cctv13
+      - cctv14
+      - cctv15
+      - cctv5p
+      - cctv16
+      - cctv17
+      - cctv4eu
+      - cctv4am
+      - brtv-bjws
+      - brtv-wy
+      - brtv-jskj
+      - brtv-ys
+      - brtv-cj
+      - brtv-tyxx
+      - brtv-sh
+
