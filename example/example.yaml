@@ -84,3 +84,105 @@
     - id: brtv-sh
       name: BRTV 生活
       source: brtv/139
+    - id: brtv-xw
+      name: BRTV 新闻
+      source: brtv/141
+    - id: brtv-kksr
+      name: BRTV 卡酷少儿
+      source: brtv/142
+    - id: anhui
+      name: 安徽卫视
+      source: zhongshu/anhui
+    - id: chongqing
+      name: 重庆卫视
+      source: zhongshu/chongqing
+    - id: dongfang
+      name: 东方卫视
+      source: zhongshu/dongfang
+    - id: fujian
+      name: 东南卫视
+      source: zhongshu/fujian
+    - id: gansu
+      name: 甘肃卫视
+      source: zhongshu/gansu
+    - id: guangdong
+      name: 广东卫视
+      source: zhongshu/guangdong
+    - id: guangxi
+      name: 广西卫视
+      source: zhongshu/guangxi
+    - id: guizhou
+      name: 贵州卫视
+      source: zhongshu/guizhou
+    - id: hebei
+      name: 河北卫视
+      source: zhongshu/hebei
+    - id: henan
+      name: 河南卫视
+      source: zhongshu/henan
+    - id: heilongjiang
+      name: 黑龙江卫视
+      source: zhongshu/heilongjiang
+    - id: hubei
+      name: 湖北卫视
+      source: zhongshu/hubei
+    - id: hunan
+      name: 湖南卫视
+      source: zhongshu/hunan
+    - id: jilin
+      name: 吉林卫视
+      source: zhongshu/jilin
+    - id: jiangsu
+      name: 江苏卫视
+      source: zhongshu/jiangsu
+    - id: jiangxi
+      name: 江西卫视
+      source: zhongshu/jiangxi
+    - id: liaoning
+      name: 辽宁卫视
+      source: zhongshu/liaoning
+    - id: neimenggu
+      name: 内蒙古卫视
+      source: zhongshu/neimenggu
+    - id: ningxia
+      name: 宁夏卫视
+      source: zhongshu/ningxia
+    - id: qinghai
+      name: 青海卫视
+      source: zhongshu/qinghai
+    - id: shandong
+      name: 山东卫视
+      source: zhongshu/shandong
+    - id: shenzhen
+      name: 深圳卫视
+      source: zhongshu/shenzhen
+    - id: shan3xi
+      name: 陕西卫视
+      source: zhongshu/shan3xi
+    - id: shan1xi
+      name: 山西卫视
+      source: zhongshu/shan1xi
+    - id: sichuan
+      name: 四川卫视
+      source: zhongshu/sichuan
+    - id: tianjin
+      name: 天津卫视
+      source: zhongshu/tianjin
+    - id: xizang
+      name: 西藏卫视
+      source: zhongshu/xizang
+    - id: beijing
+      name: 北京卫视
+      source: zhongshu/btv1
+    - id: xinjiang
+      name: 新疆卫视
+      source: zhongshu/xinjiang
+    - id: yunnan
+      name: 云南卫视
+      source: zhongshu/yunnan
+    - id: zhejiang
+      name: 浙江卫视
+      source: zhongshu/zhejiang
+    - id: cctv4k
+      name: CCTV-4K
+      source: zhongshu/4k
