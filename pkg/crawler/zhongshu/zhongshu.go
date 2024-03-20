@@ -59,9 +59,19 @@ func getEpgInfo(ctx context.Context, id string, begin time.Time, week int) ([]xm
 
 		items = append(items, xmltv.Programme{
 			Start: xmltv.Timestamp(tm),
+			Stop:  xmltv.Timestamp(tm.Add(5 * time.Minute)), // placeholder
 			Title: xmltv.NewText("", string(m[4])),
 		})
 	}
+
+	// reset stop time
+	for idx, item := range items {
+		if idx < len(items)-1 {
+			item.Stop = items[idx+1].Start
+			items[idx] = item
+		}
+	}
+
 	return items, nil
 }
 
