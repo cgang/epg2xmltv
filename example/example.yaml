@@ -60,6 +60,9 @@
     - id: cctv4am
       name: CCTV-4 美洲
       source: cntv/cctvamerica
+    - id: cetv1
+      name: CETV-1
+      source: zhongshu/cetv1
     - id: brtv-bjws
       name: BRTV 北京卫视
       source: brtv/134

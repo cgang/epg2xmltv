@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/cgang/epg2xmltv/pkg/locale"
 	"github.com/cgang/epg2xmltv/pkg/xmltv"
 )
 
@@ -17,17 +18,7 @@ const (
 )
 
 var (
-	location *time.Location
-)
-
-func init() {
-	var err error
-	if location, err = time.LoadLocation("Asia/Shanghai"); err != nil {
-		panic(fmt.Sprintf("failed to load location: %s", err))
-	}
-}
-
-var (
+	CST        = locale.MustGet("Asia/Shanghai")
 	httpClient = &http.Client{}
 )
 
@@ -37,9 +28,9 @@ func toTime(dt time.Time, clock string) time.Time {
 	year, month, day := dt.Date()
 	if tm, err := time.Parse("15:04", clock); err == nil {
 		h, m, s := tm.Clock()
-		return time.Date(year, month, day, h, m, s, 0, location)
+		return time.Date(year, month, day, h, m, s, 0, CST)
 	} else {
-		return time.Date(year, month, day, 0, 0, 0, 0, location)
+		return time.Date(year, month, day, 0, 0, 0, 0, CST)
 	}
 }
 

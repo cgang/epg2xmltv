@@ -35,7 +35,11 @@ type Channel struct {
 type Timestamp time.Time
 
 func (ts Timestamp) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
-	value := time.Time(ts).Format(TimeLayout)
+	tm := time.Time(ts)
+	if tm.IsZero() {
+		return xml.Attr{}, nil
+	}
+	value := tm.Format(TimeLayout)
 	return xml.Attr{Name: name, Value: value}, nil
 }
 
