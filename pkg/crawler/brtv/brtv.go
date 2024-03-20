@@ -104,14 +104,14 @@ func getEpgInfo(ctx context.Context, id string, dt time.Time) (*ProgramGuide, er
 	}
 }
 
-func GetProgram(ctx context.Context, id, arg string) (*xmltv.Program, error) {
+func GetProgram(ctx context.Context, arg string) (*xmltv.Program, error) {
 	dt := time.Now()
 	current, err := getEpgInfo(ctx, arg, dt)
 	if err != nil {
 		return nil, err
 	}
 
-	program := xmltv.NewProgram(id)
+	program := xmltv.NewProgram()
 	program.AddItems(current.toProgrammes(dt))
 
 	dt = dt.Add(oneDay)

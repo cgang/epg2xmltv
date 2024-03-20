@@ -33,31 +33,21 @@ func main() {
 		return
 	}
 
-	cfg, err := config.LoadConfig(*conf)
+	cfgs, err := config.LoadConfigs(*conf)
 	if err != nil {
 		fmt.Printf("Failed to load %s: %s\n", *conf, err)
 		os.Exit(1)
 	}
 
 	ctx := context.Background()
-	programs := make(map[string]*xmltv.Program)
-	for _, ccfg := range cfg.CrawlersConfig {
-		if prog, err := crawler.Run(ctx, ccfg); err == nil {
-			programs[prog.Channel.Id] = prog
-		} else {
-			log.Printf("Failed to get program for %s: %s", ccfg.Id, err)
-		}
-	}
-
-	for _, xcfg := range cfg.OutputsConfig {
+	for _, xcfg := range cfgs {
 		tv := xmltv.NewXml()
 		for _, channel := range xcfg.Channels {
-			if program, ok := programs[channel.Id]; ok {
-				if program.Channel.DisplayNames == nil {
-					program.Channel.DisplayNames = append(program.Channel.DisplayNames, xmltv.NewText("", xcfg.Name))
-				}
-				tv.Channels = append(tv.Channels, program.Channel)
-				tv.Programmes = append(tv.Programmes, program.Items...)
+			source := channel.Source
+			if program, err := crawler.Run(ctx, source); err == nil {
+				tv.AddProgram(channel.Id, channel.Name, program)
+			} else {
+				log.Printf("Failed to get program for %s: %s", source, err)
 			}
 		}
 

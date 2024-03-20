@@ -6,15 +6,10 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-type CrawlerConfig struct {
-	Type string `yaml:"type"`
-	Id   string `yaml:"id"`
-	Arg  string `yaml:"arg"`
-}
-
 type ChannelConfig struct {
-	Id   string `yaml:"id"`
-	Name string `yaml:"name"`
+	Id     string `yaml:"id"`
+	Name   string `yaml:"name"`
+	Source string `yaml:"source"`
 }
 
 type XmlConfig struct {
@@ -22,21 +17,16 @@ type XmlConfig struct {
 	Channels []ChannelConfig `yaml:"channels"`
 }
 
-type AppConfig struct {
-	CrawlersConfig []CrawlerConfig `yaml:"crawlers"`
-	OutputsConfig  []XmlConfig     `yaml:"outputs"`
-}
-
-func LoadConfig(filename string) (*AppConfig, error) {
+func LoadConfigs(filename string) ([]XmlConfig, error) {
 	file, err := os.Open(filename)
 	if err != nil {
 		return nil, err
 	}
 	defer file.Close()
 
-	var cfg AppConfig
-	if err = yaml.NewDecoder(file).Decode(&cfg); err == nil {
-		return &cfg, nil
+	var cfgs []XmlConfig
+	if err = yaml.NewDecoder(file).Decode(&cfgs); err == nil {
+		return cfgs, nil
 	} else {
 		return nil, err
 	}

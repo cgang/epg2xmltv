@@ -1,125 +1,83 @@
-crawlers:
-  - id: cctv1
-    type: cntv
-  - id: cctv2
-    type: cntv
-  - id: cctv3
-    type: cntv
-  - id: cctv4
-    type: cntv
-  - id: cctv5
-    type: cntv
-  - id: cctv6
-    type: cntv
-  - id: cctv7
-    type: cntv
-  - id: cctv8
-    type: cntv
-  - id: cctv9
-    arg: cctvjilu
-    type: cntv
-  - id: cctv10
-    type: cntv
-  - id: cctv11
-    type: cntv
-  - id: cctv12
-    type: cntv
-  - id: cctv13
-    type: cntv
-  - id: cctv14
-    arg: cctvchild
-    type: cntv
-  - id: cctv15
-    type: cntv
-  - id: cctv5p
-    arg: cctv5plus
-    type: cntv
-  - id: cctv16
-    type: cntv
-  - id: cctv17
-    type: cntv
-  - id: cctv4eu
-    arg: cctveurope
-    type: cntv
-  - id: cctv4am
-    arg: cctvamerica
-    type: cntv
-  - id: brtv-bjws
-    arg: "134"
-    type: brtv
-  - id: brtv-wy
-    arg: "135"
-    type: brtv
-  - id: brtv-jskj
-    arg: "136"
-    type: brtv
-  - id: brtv-ys
-    arg: "137"
-    type: brtv
-  - id: brtv-cj
-    arg: "133"
-    type: brtv
-  - id: brtv-tyxx
-    arg: "138"
-    type: brtv
-  - id: brtv-sh
-    arg: "139"
-    type: brtv
-outputs:
-  - name: epg.xml
-    channels:
-      - id: cctv1
-        name: CCTV-1 综合
-      - id: cctv2
-        name: CCTV-2 财经
-      - id: cctv3
-        name: CCTV-3 综艺
-      - id: cctv4
-        name: CCTV-4 亚洲
-      - id: cctv5
-        name: CCTV-5 体育
-      - id: cctv6
-        name: CCTV-6 电影
-      - id: cctv7
-        name: CCTV-7 国防军事
-      - id: cctv8
-        name: CCTV-8 电视剧
-      - id: cctv9
-        name: CCTV-9 记录
-      - id: cctv10
-        name: CCTV-10 科教
-      - id: cctv11
-        name: CCTV-11 戏曲
-      - id: cctv12
-        name: CCTV-12 社会与法
-      - id: cctv13
-        name: CCTV-13 新闻
-      - id: cctv14
-        name: CCTV-14 少儿
-      - id: cctv15
-        name: CCTV-15 音乐
-      - id: cctv5p
-        name: CCTV-5+ 体育赛事
-      - id: cctv16
-        name: CCTV-16 奥林匹克
-      - id: cctv17
-        name: CCTV-17 农业农村
-      - id: cctv4eu
-        name: CCTV-4 欧洲
-      - id: cctv4am
-        name: CCTV-4 美洲
-      - id: brtv-bjws
-        name: BRTV 北京卫视
-      - id: brtv-wy
-        name: BRTV 文艺
-      - id: brtv-jskj
-        name: BRTV 纪实科教
-      - id: brtv-ys
-        name: BRTV 影视
-      - id: brtv-cj
-        name: BRTV 财经
-      - id: brtv-tyxx
-        name: BRTV 体育休闲
-      - id: brtv-sh
-        name: BRTV 生活
-
+- name: epg.xml
+  channels:
+    - id: cctv1
+      name: CCTV-1 综合
+      source: cntv/cctv1
+    - id: cctv2
+      name: CCTV-2 财经
+      source: cntv/cctv2
+    - id: cctv3
+      name: CCTV-3 综艺
+      source: cntv/cctv3
+    - id: cctv4
+      name: CCTV-4 亚洲
+      source: cntv/cctv4
+    - id: cctv5
+      name: CCTV-5 体育
+      source: cntv/cctv5
+    - id: cctv6
+      name: CCTV-6 电影
+      source: cntv/cctv6
+    - id: cctv7
+      name: CCTV-7 国防军事
+      source: cntv/cctv7
+    - id: cctv8
+      name: CCTV-8 电视剧
+      source: cntv/cctv8
+    - id: cctv9
+      name: CCTV-9 记录
+      source: cntv/cctvjilu
+    - id: cctv10
+      name: CCTV-10 科教
+      source: cntv/cctv10
+    - id: cctv11
+      name: CCTV-11 戏曲
+      source: cntv/cctv11
+    - id: cctv12
+      name: CCTV-12 社会与法
+      source: cntv/cctv12
+    - id: cctv13
+      name: CCTV-13 新闻
+      source: cntv/cctv13
+    - id: cctv14
+      name: CCTV-14 少儿
+      source: cntv/cctvchild
+    - id: cctv15
+      name: CCTV-15 音乐
+      source: cntv/cctv15
+    - id: cctv5p
+      name: CCTV-5+ 体育赛事
+      source: cntv/cctv5plus
+    - id: cctv16
+      name: CCTV-16 奥林匹克
+      source: cntv/cctv16
+    - id: cctv17
+      name: CCTV-17 农业农村
+      source: cntv/cctv17
+    - id: cctv4eu
+      name: CCTV-4 欧洲
+      source: cntv/cctveurope
+    - id: cctv4am
+      name: CCTV-4 美洲
+      source: cntv/cctvamerica
+    - id: brtv-bjws
+      name: BRTV 北京卫视
+      source: brtv/134
+    - id: brtv-wy
+      name: BRTV 文艺
+      source: brtv/135
+    - id: brtv-jskj
+      name: BRTV 纪实科教
+      source: brtv/136
+    - id: brtv-ys
+      name: BRTV 影视
+      source: brtv/137
+    - id: brtv-cj
+      name: BRTV 财经
+      source: brtv/133
+    - id: brtv-tyxx
+      name: BRTV 体育休闲
+      source: brtv/138
+    - id: brtv-sh
+      name: BRTV 生活
+      source: brtv/139

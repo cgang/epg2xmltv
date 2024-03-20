@@ -92,11 +92,7 @@ func getEpgInfo(ctx context.Context, arg string, dt time.Time) (*ProgramGuide, e
 	}
 }
 
-func GetProgram(ctx context.Context, id, arg string) (*xmltv.Program, error) {
-	if arg == "" {
-		arg = id
-	}
-
+func GetProgram(ctx context.Context, arg string) (*xmltv.Program, error) {
 	dt := time.Now()
 	current, err := getEpgInfo(ctx, arg, dt)
 	if err != nil {
@@ -105,9 +101,9 @@ func GetProgram(ctx context.Context, id, arg string) (*xmltv.Program, error) {
 
 	var program *xmltv.Program
 	if current.ChannelName != "" {
-		program = xmltv.NewProgram(id, xmltv.NewText("zh", current.ChannelName))
+		program = xmltv.NewProgram(xmltv.NewText("zh", current.ChannelName))
 	} else {
-		program = xmltv.NewProgram(id)
+		program = xmltv.NewProgram()
 	}
 
 	program.AddItems(current.toProgrammes())

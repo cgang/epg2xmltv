@@ -56,21 +56,16 @@ func NewProgramme(start, stop time.Time, title string) Programme {
 }
 
 type Program struct {
-	Channel Channel
-	Items   []Programme
+	ChannelNames []LocalizedText // channel name from crawler
+	Items        []Programme
 }
 
-func NewProgram(id string, names ...LocalizedText) *Program {
-	return &Program{
-		Channel: Channel{Id: id, DisplayNames: names},
-	}
+func NewProgram(names ...LocalizedText) *Program {
+	return &Program{ChannelNames: names}
 }
 
 func (p *Program) AddItems(items []Programme) {
-	for _, item := range items {
-		item.Channel = p.Channel.Id
-		p.Items = append(p.Items, item)
-	}
+	p.Items = append(p.Items, items...)
 }
 
 type XmlTv struct {
@@ -101,4 +96,17 @@ func (t *XmlTv) Save(name string) error {
 	f.Write([]byte(DocType))
 
 	return xml.NewEncoder(f).Encode(t)
+}
+
+func (t *XmlTv) AddProgram(id, name string, program *Program) {
+	names := program.ChannelNames
+	if len(names) == 0 {
+		names = append(names, NewText("", name))
+	}
+
+	t.Channels = append(t.Channels, Channel{Id: id, DisplayNames: names})
+	for _, item := range program.Items {
+		item.Channel = id
+		t.Programmes = append(t.Programmes, item)
+	}
 }
