@@ -30,7 +30,7 @@ func toTime(dt time.Time, clock string) time.Time {
 		h, m, s := tm.Clock()
 		return time.Date(year, month, day, h, m, s, 0, CST)
 	} else {
-		return time.Date(year, month, day, 0, 0, 0, 0, CST)
+		return time.Time{}
 	}
 }
 
