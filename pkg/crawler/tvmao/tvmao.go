@@ -49,10 +49,16 @@ func getEpgInfo(ctx context.Context, id string, dt time.Time) ([]xmltv.Programme
 		return nil, fmt.Errorf("%s: %s", resp.Status, data)
 	}
 
+	raw, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
 	var data []json.RawMessage
-	if err = json.NewDecoder(resp.Body).Decode(&data); err != nil {
+	if err = json.Unmarshal(raw, &data); err != nil {
 		return nil, err
 	} else if len(data) < 3 {
+		log.Println(string(raw))
 		return nil, fmt.Errorf("unrecognized payload")
 	}
 
