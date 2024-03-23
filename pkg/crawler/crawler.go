@@ -7,6 +7,7 @@ import (
 
 	"github.com/cgang/epg2xmltv/pkg/crawler/brtv"
 	"github.com/cgang/epg2xmltv/pkg/crawler/cntv"
+	"github.com/cgang/epg2xmltv/pkg/crawler/tvmao"
 	"github.com/cgang/epg2xmltv/pkg/crawler/zhongshu"
 	"github.com/cgang/epg2xmltv/pkg/xmltv"
 )
@@ -32,6 +33,8 @@ func Run(ctx context.Context, source string) (program *xmltv.Program, err error)
 		program, err = brtv.GetProgram(ctx, arg)
 	case "zhongshu":
 		program, err = zhongshu.GetProgram(ctx, arg)
+	case "tvmao":
+		program, err = tvmao.GetProgram(ctx, arg)
 	default:
 		return nil, fmt.Errorf("unknown crawler: %s", crawler)
 	}
@@ -41,3 +44,4 @@ func Run(ctx context.Context, source string) (program *xmltv.Program, err error)
 	}
 	return
 }
+

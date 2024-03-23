@@ -186,3 +186,21 @@
     - id: cctv4k
       name: CCTV-4K
       source: zhongshu/4k
+    - id: hunan-jykt
+      name: 湖南金鹰卡通频道
+      source: tvmao/HUNANTV2
+    - id: hunan-yl
+      name: 湖南娱乐频道
+      source: tvmao/HUNANTV3
+    - id: hunan-dsj
+      name: 湖南电视剧频道
+      source: tvmao/HUNANTV4
+    - id: hunan-aw
+      name: 湖南爱晚频道
+      source: tvmao/HUNANTV5
+    - id: hunan-dy
+      name: 湖南电影频道
+      source: tvmao/HUNANTV6
+    - id: hunan-gj
+      name: 湖南卫视国际频道
+      source: tvmao/HUNANTV7
