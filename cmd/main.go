@@ -4,6 +4,7 @@ import (
 	"context"
 	"flag"
 	"fmt"
+	"io"
 	"log"
 	"os"
 
@@ -14,6 +15,7 @@ import (
 
 func main() {
 	help := flag.Bool("h", false, "help")
+	quiet := flag.Bool("q", false, "quiet")
 	conf := flag.String("c", "", "config YAML")
 
 	flag.Usage = func() {
@@ -31,6 +33,11 @@ func main() {
 	if *help || *conf == "" {
 		flag.Usage()
 		return
+	}
+
+	if *quiet {
+		// suppress log in quiet mode
+		log.SetOutput(io.Discard)
 	}
 
 	cfgs, err := config.LoadConfigs(*conf)
